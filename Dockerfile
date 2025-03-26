@@ -1,3 +1,5 @@
+RUN mkdir -p /home/user/.local/tmp/buildkit-mount4054033649/target
+
 # Use an official OpenJDK runtime as a parent image
 FROM openjdk:17-jdk-slim
 
