@@ -14,7 +14,7 @@ public class LoginServlet extends HttpServlet {
 
         UserDAO userDAO = new UserDAO();
         if (userDAO.validateUser(email, password)) {
-            response.sendRedirect("homepage.html");
+            response.sendRedirect("index.html");
         } else {
             response.sendRedirect("login.html?error=Invalid credentials");
         }
