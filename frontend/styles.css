@@ -1,0 +1,76 @@
+.card {
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+}
+body{
+    background-color: aliceblue;
+}
+
+.list-group-item {
+    margin-bottom: 0.7rem;
+    border-radius: 0.25rem;
+}
+.nav-link{
+    font-size:1.2rem;
+}
+.custom-navbar{
+    background: #002d64;
+    color: white;
+}
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.table {
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.modal-content {
+    border-radius: 0.5rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+.quiz-timer {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: #0d6efd;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
+
+.navbar-brand {
+    font-family: "Acme", sans-serif;
+    font-size: 35px;
+}
+.card-title {
+    font-family: "Acme", sans-serif;
+    font-style: normal;
+    font-size: 30px;
+}
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+    }
+    .list-group-item {
+        font-size: 14px;
+    }
+    .quiz-timer {
+        font-size: 12px;
+        padding: 0.3rem 0.7rem;
+    }
+    .action-buttons{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
