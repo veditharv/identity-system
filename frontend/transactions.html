@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions - VeriFi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Transaction Validation</h1>
+    </header>
+    <section>
+        <form id="validateForm">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <label for="issueDate">Issue Date:</label>
+            <input type="date" id="issueDate" required>
+
+            <button type="submit">Validate</button>
+        </form>
+
+        <p id="result"></p>
+    </section>
+
+    <script>
+        document.getElementById("validateForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const fullName = document.getElementById("fullName").value;
+            const dob = document.getElementById("dob").value;
+            const issueDate = document.getElementById("issueDate").value;
+
+            fetch("http://localhost:8080/validate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ fullName, dob, issueDate })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").textContent = data.message;
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>

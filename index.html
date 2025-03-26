@@ -124,8 +124,21 @@
         <article>
             <h2>Secure, Decentralized Identity Verification</h2>
             <p>Empowering users with privacy-first KYC/AML solutions using Self-Sovereign Identity, Smart Contracts, and AI-enhanced security.</p>
-            <a href="frontend/login.html" class="btn">Get Started</a>
+            <div id="g_id_onload"
+                 data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                 data-callback="handleCredentialResponse">
+            </div>
+            <div class="g_id_signin" data-client_id="559783410613-932vr8a8u6s6sv31k2hl1n614tdin06p.apps.googleusercontent.com"
+            data-callback="handleCredentialResponse"></div>
+            <div class="g_id_signin" data-type="standard"></div>
         </article>
     </section>
+    <script>
+        function handleCredentialResponse(response) {
+            console.log("Google Sign-In Response:", response.credential);
+            sessionStorage.setItem("google_token", response.credential);
+            window.location.href = "dashboard.html";  // Redirect to dashboard
+        }
+    </script>
 </body>
 </html>
