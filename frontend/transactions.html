@@ -115,7 +115,7 @@
 <body>
 
     <header>
-        <img src="static/logo.png" alt="VeriFi Logo">
+        <img src="static/logo.svg" alt="VeriFi Logo">
         <h1>Transaction Validation</h1>
     </header>
 
@@ -174,7 +174,7 @@
             })
             .catch(error => {
                 console.error("Error:", error);
-                document.getElementById("result").textContent = "❌ Error occurred!";
+                document.getElementById("result").textContent = "❌ Not Verified!";
             });
         });
     </script>
