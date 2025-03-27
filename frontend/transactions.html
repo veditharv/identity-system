@@ -10,6 +10,7 @@
     <header>
         <h1>Transaction Validation</h1>
     </header>
+
     <section>
         <form id="validateForm">
             <label for="fullName">Full Name:</label>
@@ -30,23 +31,33 @@
     <script>
         document.getElementById("validateForm").addEventListener("submit", function(event) {
             event.preventDefault();
-            
-            const fullName = document.getElementById("fullName").value;
+
+            const fullName = document.getElementById("fullName").value.trim();
             const dob = document.getElementById("dob").value;
             const issueDate = document.getElementById("issueDate").value;
 
+            if (!fullName || !dob || !issueDate) {
+                document.getElementById("result").textContent = "⚠️ All fields are required!";
+                return;
+            }
+
             fetch("http://localhost:8080/validate", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ fullName, dob, issueDate })
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById("result").textContent = data.message;
+                if (data.message.includes("Successful")) {
+                    document.getElementById("result").textContent = "✅ Validation Successful!";
+                } else {
+                    window.location.href = "verify_passport.html";
+                }
             })
-            .catch(error => console.error("Error:", error));
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("result").textContent = "❌ Error occurred!";
+            });
         });
     </script>
 </body>
