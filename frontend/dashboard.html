@@ -4,20 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - VeriFi</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background-image: url('static/background.svg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            padding: 20px;
+            font-family: "Acme", sans-serif;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+        }
+
+        .logout-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #cc0000;
+        }
+
+        /* Main Dashboard */
+        .dashboard {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 90%;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            background-color: #0273be;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: #007acc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .dashboard {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Header -->
     <header>
-        <h1>Welcome to Your Financial Dashboard</h1>
+        <img src="static/VeriFi2.svg" alt="VeriFi logo" class="logo">
+        <button class="logout-btn" onclick="logout()">Logout</button>
     </header>
-    <section>
-        <button onclick="goToTransactions()">View Transactions</button>
-    </section>
+
+    <!-- Dashboard Cards -->
+    <div class="dashboard">
+        <!-- Transactions Card -->
+        <div class="card">
+            <h2>Transactions</h2>
+            <p>View all your past transactions securely.</p>
+            <button class="btn" onclick="goToTransactions()">View Transactions</button>
+        </div>
+
+        <!-- User Profile Card -->
+        <div class="card">
+            <h2>User Profile</h2>
+            <p>Manage your account and personal details.</p>
+            <button class="btn" onclick="goToProfile()">View Profile</button>
+        </div>
+    </div>
 
     <script>
         function goToTransactions() {
             window.location.href = "transactions.html";
         }
+
+        function goToProfile() {
+            window.location.href = "profile.html";
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = "index.html"; // Redirect to home/login page
+        }
     </script>
+
 </body>
 </html>
